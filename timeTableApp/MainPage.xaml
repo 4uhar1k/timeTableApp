@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="timeTableApp.MainPage">
+
+    
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <CollectionView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="8">
+                            <Label Text="monday" TextColor="Black"></Label>
+                            <Label Text="tuesday"></Label>
+                            <Label Text="wednesday"></Label>
+                            <Label Text="thursday"></Label>
+                            <Label Text="friday"></Label>
+                            <Label Text="saturday"></Label>
+                            <Label Text="sunday"></Label>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+               
+                
+            </CollectionView>
+        </VerticalStackLayout>
+   
+
+</ContentPage>
