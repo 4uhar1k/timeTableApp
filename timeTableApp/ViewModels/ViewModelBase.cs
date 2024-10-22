@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace timeTableApp.Models
+namespace timeTableApp.ViewModels
 {
-    public class TimeTable
+    class ViewModelBase
     {
-        public Dictionary<int, Event> eventsList { get; set; }
-
-        
     }
 }

@@ -10,6 +10,6 @@ namespace timeTableApp.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Color color;
+        //public Color color;
     }
 }
