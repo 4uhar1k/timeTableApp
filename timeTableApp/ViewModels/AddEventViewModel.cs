@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using timeTableApp.Commands;
 using timeTableApp.Models;
 
 namespace timeTableApp.ViewModels
@@ -77,11 +78,7 @@ namespace timeTableApp.ViewModels
         public AddEventViewModel()
         {
             eventsList = new ObservableCollection<Event>();
-            AddCommand = new Command(() =>
-            {
-                Event newEvent = new Event() { name = Name, description = Description, time = Time, category = Category };
-                eventsList.Add(newEvent);
-            });
+            AddCommand = new AddEventCommand();
         }
     }
 }
