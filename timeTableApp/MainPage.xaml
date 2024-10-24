@@ -8,20 +8,22 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            <CollectionView ItemsSource="{Binding test}" HeightRequest="500" BackgroundColor="Black" >
+            <CollectionView ItemsSource="{Binding eventsList}" HeightRequest="500" BackgroundColor="Black" >
             
             <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="8">
-                        
-                        
+                        <Label Text="{Binding Name}" FontSize="24" TextColor="White" />
+                        <Label Text="{Binding Description}" FontSize="24" TextColor="White"/>
+                        <Label Text="{Binding Time}" FontSize="24" TextColor="White"/>
+                        <Label Text="{Binding Category}" FontSize="24" TextColor="White"/>
                     </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
                
                 
             </CollectionView>
-
+        <Button Text="Add Event" HeightRequest="200" WidthRequest="100" Clicked="OnCounterClicked"></Button>
         
         
         </VerticalStackLayout>

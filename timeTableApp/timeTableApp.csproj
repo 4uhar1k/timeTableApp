@@ -57,18 +57,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AndroidResource Remove="Новая папка\**" />
-	  <Compile Remove="Новая папка\**" />
-	  <EmbeddedResource Remove="Новая папка\**" />
-	  <MauiCss Remove="Новая папка\**" />
-	  <MauiXaml Remove="Новая папка\**" />
-	  <None Remove="Новая папка\**" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\addEvent.xaml.cs">
+	    <DependentUpon>addEvent.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\addEvent.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

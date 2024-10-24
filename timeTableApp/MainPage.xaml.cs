@@ -6,20 +6,20 @@ namespace timeTableApp
     {
         int count = 0;
 
-        List<Models.Category> test;
+        //List<Models.Event> test;
 
         public MainPage()
         {
             InitializeComponent();
-            test = new List<Models.Category>();
-            test.Add(new Models.Category() { Id = 1, Name = "sosalnya"});
-            test.Add(new Models.Category() { Id = 2, Name = "ebalnya" });
-            BindingContext = test;
+            /*test = new List<Models.Event>();
+            test.Add(new Models.Event() { name = "1", description = "sosalnya", time="17:00", category=null});
+            test.Add(new Models.Event() { name = "2", description = "ebalnya", time = "18:00", category = new Models.Category() { Id = 1, Name = "uni" } });*/
+            BindingContext = new ViewModels.AddEventViewModel();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private async void OnCounterClicked(object sender, EventArgs e)
         {
-            
+            await Navigation.PushAsync(new Views.addEvent());
         }
 
         
