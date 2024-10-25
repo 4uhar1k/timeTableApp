@@ -7,7 +7,8 @@
     
         <VerticalStackLayout
             Padding="30,0"
-            Spacing="25">
+            Spacing="25"
+            >
             <CollectionView ItemsSource="{Binding Events}" HeightRequest="500" BackgroundColor="Black" >
             
             <CollectionView.ItemTemplate>

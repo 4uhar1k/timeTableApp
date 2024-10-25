@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Xml;
 using timeTableApp.Commands;
 using timeTableApp.Models;
 
@@ -44,6 +45,21 @@ namespace timeTableApp.ViewModels
             }
         }
 
+        private string _day;
+
+        public string Day
+        {
+            get
+            {
+                return _day;
+            }
+            set
+            {
+                _day = value;
+                OnPropertyChanged(nameof(Day));
+            }
+        }
+
 
         private string _time;
         public string Time
@@ -75,10 +91,10 @@ namespace timeTableApp.ViewModels
 
         public ICommand AddCommand { get; }
 
-        public AddEventViewModel()
+        public AddEventViewModel(TimeTable timeTable)
         {
             eventsList = new ObservableCollection<Event>();
-            AddCommand = new AddEventCommand();
+            AddCommand = new AddEventCommand(this, timeTable);
         }
     }
 }

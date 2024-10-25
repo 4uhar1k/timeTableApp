@@ -11,6 +11,7 @@ namespace timeTableApp.ViewModels
         private readonly Models.Event _event;
         public string name => _event.name;
         public string description => _event.name;
+        public string day => _event.day;
         public string time => _event.name;
         public Models.Category category => _event.category;
 

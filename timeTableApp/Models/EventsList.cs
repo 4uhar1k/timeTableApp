@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace timeTableApp.Models
 {
-    public class TimeTable
+    public class EventsList
     {
-        private readonly EventsList _eventsList;
+        public List<Event> eventsList { get; set; }
 
-        public TimeTable()
+        public EventsList()
         {
-            _eventsList = new EventsList();
+            eventsList = new List<Event>();
         }
 
         public IEnumerable<Event> GetEvents(string day)
         {
-            return _eventsList.GetEvents(day);
+            return (IEnumerable<Event>)eventsList.Where(n => n.day == day);
         }
 
         public void AddEvent(Event e)
         {
-            _eventsList.AddEvent(e);
+            eventsList.Add(e);
         }
     }
 }

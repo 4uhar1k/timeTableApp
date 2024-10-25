@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using timeTableApp.Models;
 
 namespace timeTableApp.ViewModels
 {
@@ -14,7 +15,10 @@ namespace timeTableApp.ViewModels
         public TimeTableViewModel() 
         {
             _events = new ObservableCollection<EventViewModel>();
+           
         }
+
+        
 
     }
 }

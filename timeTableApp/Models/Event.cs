@@ -10,6 +10,8 @@ namespace timeTableApp.Models
     {
         public string name { get; set; }
         public string description { get; set; }
+
+        public string day { get; set; }
         public string time { get; set; }
         public Category category { get; set; }
     }
