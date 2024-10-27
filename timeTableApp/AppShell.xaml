@@ -7,9 +7,16 @@
     Shell.FlyoutBehavior="Disabled"
     Title="timeTableApp">
 
-    <ShellContent
+    
+    <TabBar>
+        <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="MainPage"></ShellContent>
+        <ShellContent
+    Title="Add"
+    ContentTemplate="{DataTemplate local:addEvent}"
+    Route="MainPage"></ShellContent>    
+    </TabBar>
 
 </Shell>

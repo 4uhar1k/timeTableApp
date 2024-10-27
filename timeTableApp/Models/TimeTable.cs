@@ -8,21 +8,13 @@ namespace timeTableApp.Models
 {
     public class TimeTable
     {
-        private readonly EventsList _eventsList;
+        private readonly List<Event> _eventsList;
 
         public TimeTable()
         {
-            _eventsList = new EventsList();
+            _eventsList = new List<Event>();
         }
 
-        public IEnumerable<Event> GetEvents(string day)
-        {
-            return _eventsList.GetEvents(day);
-        }
-
-        public void AddEvent(Event e)
-        {
-            _eventsList.AddEvent(e);
-        }
+        
     }
 }
