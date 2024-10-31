@@ -8,11 +8,11 @@ namespace timeTableApp.Models
 {
     public class Event
     {
-        public string name { get; set; }
-        public string description { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
-        public string day { get; set; }
-        public string time { get; set; }
-        public Category category { get; set; }
+        public string Day { get; set; }
+        public string Time { get; set; }
+        public Category EventCategory { get; set; }
     }
 }

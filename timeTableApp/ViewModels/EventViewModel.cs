@@ -11,103 +11,48 @@ using System.Windows.Input;
 
 namespace timeTableApp.ViewModels
 {
-    public class EventViewModel : INotifyPropertyChanged
+    public class EventViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-        public ObservableCollection<Models.Event> Events;
+        
         public Models.Event Event; 
 
         public ICommand AddCommand { get; set; }
 
         public EventViewModel()
         {
-            Events = new ObservableCollection<Models.Event>();
+            //Events = new ObservableCollection<Models.Event>();
+            Event = new Models.Event();
 
             AddCommand = new Command(() =>
             {
                 Models.Event newEvent = new Models.Event()
                 {
-                    name = Name,
-                    description = Description,
-                    day = Day,
-                    time = Time,
-                    category = Category
+                    Name = Name,
+                    Description = Description,
+                    Day = Day,
+                    Time = Time,
+                    EventCategory = EventCategory
                 };
 
-                Events.Add(newEvent);
+
+
+                //Events.Add(newEvent);
+
+                using (StreamWriter sw = new StreamWriter(timeTablePath, true))
+                {
+                    sw.WriteLine(newEvent.Name);
+                    sw.WriteLine(newEvent.Description);
+                    sw.WriteLine(newEvent.Day);
+                    sw.WriteLine(newEvent.Time);
+                    sw.WriteLine(newEvent.EventCategory.Id);
+                    sw.WriteLine(newEvent.EventCategory.Name);
+                    sw.Close();
+                }
 
             }
             );
         }
 
-        public string Name
-        {
-            get => Event.name;
-            set
-            {
-                if (Event.name != value) 
-                {
-                    Event.name = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public string Description
-        {
-            get => Event.description;
-            set
-            {
-                if (Event.description != value)
-                {
-                    Event.description = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public string Day
-        {
-            get => Event.day;
-            set
-            {
-                if (Event.day != value)
-                {
-                    Event.day = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public string Time
-        {
-            get => Event.time;
-            set
-            {
-                if (Event.time != value)
-                {
-                    Event.time = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public Models.Category Category
-        {
-            get => Event.category;
-            set
-            {
-                if (Event.category != value)
-                {
-                    Event.category = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        protected void OnPropertyChanged([CallerMemberName] string property="")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
-        }
+        
     }
 }

@@ -10,6 +10,6 @@ public partial class addEvent : ContentPage
 
 	public async void goBack(object sender, EventArgs e)
 	{
-		await Navigation.PopAsync();
+		await DisplayAlert("Ready!", "Event has been successfully added", "OK");
 	}
 }

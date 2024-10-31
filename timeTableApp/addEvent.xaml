@@ -6,6 +6,7 @@
     <VerticalStackLayout>
         <Editor Placeholder="Please enter the name..."  Text="{Binding Name}"  HeightRequest="60" Margin="0,50,0,0" FontSize="25"></Editor>
         <Editor Placeholder="Please enter the description..." Text="{Binding Description}" HeightRequest="60" Margin="0,50,0,0" FontSize="25"></Editor>
+        <Editor Placeholder="Please enter the description..." Text="{Binding Day}" HeightRequest="60" Margin="0,50,0,0" FontSize="25"></Editor>
         <Editor Placeholder="Please enter the time..." Text="{Binding Time}" HeightRequest="60" Margin="0,50,0,0" FontSize="25"></Editor>
         <Button Text="Add" Command="{Binding AddCommand}" Clicked="goBack"></Button>
     </VerticalStackLayout>

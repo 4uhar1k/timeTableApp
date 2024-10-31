@@ -14,17 +14,19 @@
             <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="8">
-                        <Label Text="{Binding name}" FontSize="24" TextColor="White" />
-                        <Label Text="{Binding description}" FontSize="24" TextColor="White"/>
-                        <Label Text="{Binding time}" FontSize="24" TextColor="White"/>
-                        <Label Text="{Binding category}" FontSize="24" TextColor="White"/>
+                        <Label Text="{Binding Name}" FontSize="24" TextColor="White" />
+                        <Label Text="{Binding Description}" FontSize="24" TextColor="White"/>
+                        <Label Text="{Binding Day}" FontSize="24" TextColor="White"/>
+                        <Label Text="{Binding Time}" FontSize="24" TextColor="White"/>
+                        <Label Text="{Binding EventCategory}" FontSize="24" TextColor="White"/>
+                        <Button Text="-" BackgroundColor="Red" TextColor="White" FontSize="12"  HeightRequest="30" WidthRequest="30"/>
                     </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
                
                 
             </CollectionView>
-        <Button Text="Add Event" HeightRequest="200" WidthRequest="100" Clicked="OnCounterClicked"></Button>
+        
         
         
         </VerticalStackLayout>
