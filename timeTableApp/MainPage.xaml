@@ -2,14 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="timeTableApp.MainPage"
-             xmlns:local ="clr-namespace:timeTableApp">
+             xmlns:local ="clr-namespace:timeTableApp"
+             Title="Your Timetable" >
 
     
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25"
             >
-            <CollectionView ItemsSource="{Binding Events}" HeightRequest="500" BackgroundColor="Black" >
+            <CollectionView ItemsSource="{Binding Events}" HeightRequest="600" BackgroundColor="Black" >
             
             <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -26,7 +27,7 @@
                
                 
             </CollectionView>
-        
+        <Button Text="Refresh" Clicked="Update"/>
         
         
         </VerticalStackLayout>

@@ -36,7 +36,7 @@ namespace timeTableApp.ViewModels
 
 
 
-                //Events.Add(newEvent);
+                Events.Add(newEvent);
 
                 using (StreamWriter sw = new StreamWriter(timeTablePath, true))
                 {

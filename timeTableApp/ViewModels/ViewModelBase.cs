@@ -15,10 +15,10 @@ namespace timeTableApp.ViewModels
         string name, description, day, time;
         Models.Category category;
         public string timeTablePath = Path.Combine(FileSystem.AppDataDirectory, "timetable.txt");
-        
+        public ObservableCollection<Models.Event> Events { get; set; }
         public ViewModelBase()
         {
-            
+            Events = new ObservableCollection<Models.Event>();
             name = "";
             description = "";
             day = "";

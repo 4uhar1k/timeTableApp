@@ -9,11 +9,11 @@ namespace timeTableApp.ViewModels
 {
     public class MainWinViewModel:ViewModelBase
     {
-        public ObservableCollection<Models.Event> Events { get; set; }
+        //public ObservableCollection<Models.Event> Events { get; set; }
     
         public MainWinViewModel()
         {
-            Events = new ObservableCollection<Models.Event>();
+            //Events = new ObservableCollection<Models.Event>();
             if (!File.Exists(timeTablePath))
             {
                 File.Create(timeTablePath);

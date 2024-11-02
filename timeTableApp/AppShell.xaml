@@ -9,14 +9,18 @@
 
     
     <TabBar>
-        <ShellContent
+        <ShellContent x:Name="mainShellContent"
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage"></ShellContent>
         <ShellContent
     Title="Add"
     ContentTemplate="{DataTemplate local:addEvent}"
-    Route="MainPage"></ShellContent>    
+    Route="addEvent"></ShellContent>
+        <ShellContent
+Title="Settings"
+ContentTemplate="{DataTemplate local:SettingsPage}"
+Route="SettingsPage"></ShellContent>
     </TabBar>
 
 </Shell>
