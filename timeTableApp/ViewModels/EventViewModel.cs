@@ -15,13 +15,14 @@ namespace timeTableApp.ViewModels
     {
         
         public Models.Event Event; 
-
+        public string beginTime, endTime;
         public ICommand AddCommand { get; set; }
 
         public EventViewModel()
         {
             //Events = new ObservableCollection<Models.Event>();
             Event = new Models.Event();
+            
 
             AddCommand = new Command(() =>
             {
@@ -30,13 +31,13 @@ namespace timeTableApp.ViewModels
                     Name = Name,
                     Description = Description,
                     Day = Day,
-                    Time = Time,
+                    Time = $"{BeginTime}-{EndTime}",
                     EventCategory = EventCategory
                 };
 
 
 
-                Events.Add(newEvent);
+                AllEvents.Add(newEvent);
 
                 using (StreamWriter sw = new StreamWriter(timeTablePath, true))
                 {

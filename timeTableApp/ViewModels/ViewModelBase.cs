@@ -12,17 +12,23 @@ namespace timeTableApp.ViewModels
     public class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-        string name, description, day, time;
+        string name, description, day, time, begintime, endtime;
         Models.Category category;
         public string timeTablePath = Path.Combine(FileSystem.AppDataDirectory, "timetable.txt");
-        public ObservableCollection<Models.Event> Events { get; set; }
+        public ObservableCollection<Models.Event> AllEvents { get; set; }
+        
+        public ObservableCollection<Models.Event>[] Events { get; set; }
+
         public ViewModelBase()
         {
-            Events = new ObservableCollection<Models.Event>();
+            AllEvents = new ObservableCollection<Models.Event>();
+            Events = new ObservableCollection<Models.Event>[7] { new ObservableCollection<Models.Event>(), new ObservableCollection<Models.Event>(), new ObservableCollection<Models.Event>(), new ObservableCollection<Models.Event>(), new ObservableCollection<Models.Event>(), new ObservableCollection<Models.Event>(), new ObservableCollection<Models.Event>() };
             name = "";
             description = "";
             day = "";
             time = "";
+            begintime = "";
+            endtime = "";
             category = new Models.Category();
             
         }
@@ -75,6 +81,32 @@ namespace timeTableApp.ViewModels
                 if (time != value)
                 {
                     time = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public string BeginTime
+        {
+            get => begintime;
+            set
+            {
+                if (begintime != value)
+                {
+                    begintime = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public string EndTime
+        {
+            get => endtime;
+            set
+            {
+                if (endtime != value)
+                {
+                    endtime = value;
                     OnPropertyChanged();
                 }
             }

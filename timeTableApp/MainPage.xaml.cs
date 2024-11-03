@@ -8,8 +8,6 @@ namespace timeTableApp
         public MainPage()
         {
             InitializeComponent();
-            /*string timeTablePath = Path.Combine(FileSystem.AppDataDirectory, "timetable.txt");
-            File.Delete(timeTablePath);*/
             BindingContext = new ViewModels.MainWinViewModel();
         }
 
