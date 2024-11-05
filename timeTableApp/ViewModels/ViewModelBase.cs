@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Maui.Core.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -72,35 +73,16 @@ namespace timeTableApp.ViewModels
                     }
 
                     AllEvents.Add(e);
-                    switch (e.Day)
-                    {
-                        case "Monday":
-                            Events[0].Add(e);
-                            break;
-                        case "Tuesday":
-                            Events[1].Add(e);
-                            break;
-                        case "Wednesday":
-                            Events[2].Add(e);
-                            break;
-                        case "Thursday":
-                            Events[3].Add(e);
-                            break;
-                        case "Friday":
-                            Events[4].Add(e);
-                            break;
-                        case "Saturday":
-                            Events[5].Add(e);
-                            break;
-                        case "Sunday":
-                            Events[6].Add(e);
-                            break;
-
-                    }
                 }
                 sr.Close();
             }
-
+            Events[0] = AllEvents.Where(n => n.Day == "Monday").ToObservableCollection();
+            Events[1] = AllEvents.Where(n => n.Day == "Tuesday").ToObservableCollection();
+            Events[2] = AllEvents.Where(n => n.Day == "Wednesday").ToObservableCollection();
+            Events[3] = AllEvents.Where(n => n.Day == "Thursday").ToObservableCollection();
+            Events[4] = AllEvents.Where(n => n.Day == "Friday").ToObservableCollection();
+            Events[5] = AllEvents.Where(n => n.Day == "Saturday").ToObservableCollection();
+            Events[6] = AllEvents.Where(n => n.Day == "Sunday").ToObservableCollection();
             using (StreamReader sr = new StreamReader(categoriesPath))
             {
                 string? line;

@@ -15,11 +15,10 @@ namespace timeTableApp.ViewModels
     public class EventViewModel : ViewModelBase
     {
         
-        public Models.Event Event; 
+        public Event Event; 
         public string beginTime, endTime;
         string name;
         int id;
-        bool basicExists;
         public ICommand AddEvent { get; set; }
         public ICommand AddCategory { get; set; }
 

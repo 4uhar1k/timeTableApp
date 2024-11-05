@@ -37,7 +37,7 @@
                                         <!--<Label Grid.Row="0" Grid.Column="1" Text="{Binding Day}" FontSize="24" TextColor="White"/>-->
                                         <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Time}" FontSize="20" TextColor="Black"/>
                                         <Label Grid.Row="0" Grid.Column="1"  Text="{Binding EventCategory.CategoryName}" FontSize="15" TextColor="Red"/>
-                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding DeleteCommand}"  Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
+                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding Source={RelativeSource AncestorType={x:Type Page}}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}"  Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
                                     </Grid>
                                 </StackLayout>
                             </Border>
@@ -69,7 +69,7 @@
                                         <!--<Label Grid.Row="0" Grid.Column="1" Text="{Binding Day}" FontSize="24" TextColor="White"/>-->
                                         <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Time}" FontSize="20" TextColor="Black"/>
                                         <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.CategoryName}" FontSize="15" TextColor="Red"/>
-                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding DeleteCommand}" CommandParameter="{Binding Source={x:Reference Name=tuesdayCol}, Path=SelectedItem}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
+                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding Source={RelativeSource AncestorType={x:Type Page}}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
                                     </Grid>
                                 </StackLayout>
                             </Border>
@@ -101,7 +101,7 @@
                                         <!--<Label Grid.Row="0" Grid.Column="1" Text="{Binding Day}" FontSize="24" TextColor="White"/>-->
                                         <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Time}" FontSize="20" TextColor="Black"/>
                                         <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.CategoryName}" FontSize="15" TextColor="Red"/>
-                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding DeleteCommand}" CommandParameter="{Binding Source={x:Reference Name=wednesdayCol}, Path=SelectedItem}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
+                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding Source={RelativeSource AncestorType={x:Type Page}}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
                                     </Grid>
                                 </StackLayout>
                             </Border>
@@ -133,7 +133,7 @@
                                         <!--<Label Grid.Row="0" Grid.Column="1" Text="{Binding Day}" FontSize="24" TextColor="White"/>-->
                                         <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Time}" FontSize="20" TextColor="Black"/>
                                         <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.CategoryName}" FontSize="15" TextColor="Red"/>
-                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding DeleteCommand}" CommandParameter="{Binding Source={x:Reference Name=thursdayCol}, Path=SelectedItem}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
+                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding Source={RelativeSource AncestorType={x:Type Page}}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
                                     </Grid>
                                 </StackLayout>
                             </Border>
@@ -165,7 +165,7 @@
                                         <!--<Label Grid.Row="0" Grid.Column="1" Text="{Binding Day}" FontSize="24" TextColor="White"/>-->
                                         <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Time}" FontSize="20" TextColor="Black"/>
                                         <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.CategoryName}" FontSize="15" TextColor="Red"/>
-                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding DeleteCommand}" CommandParameter="{Binding Source={x:Reference Name=fridayCol}, Path=SelectedItem}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
+                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding Source={RelativeSource AncestorType={x:Type Page}}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
                                     </Grid>
                                 </StackLayout>
                             </Border>
@@ -197,7 +197,7 @@
                                         <!--<Label Grid.Row="0" Grid.Column="1" Text="{Binding Day}" FontSize="24" TextColor="White"/>-->
                                         <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Time}" FontSize="20" TextColor="Black"/>
                                         <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.CategoryName}" FontSize="15" TextColor="Red"/>
-                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding DeleteCommand}" CommandParameter="{Binding Source={x:Reference Name=saturdayCol}, Path=SelectedItem}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
+                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding Source={RelativeSource AncestorType={x:Type Page}}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
                                     </Grid>
                                 </StackLayout>
                             </Border>
@@ -229,7 +229,7 @@
                                         <!--<Label Grid.Row="0" Grid.Column="1" Text="{Binding Day}" FontSize="24" TextColor="White"/>-->
                                         <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Time}" FontSize="20" TextColor="Black"/>
                                         <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.CategoryName}" FontSize="15" TextColor="Red"/>
-                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding DeleteCommand}" CommandParameter="{Binding Events[6]}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
+                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding Source={RelativeSource AncestorType={x:Type Page}}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
                                     </Grid>
                                 </StackLayout>
                             </Border>

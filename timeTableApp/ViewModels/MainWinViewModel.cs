@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using timeTableApp.Models;
 
 namespace timeTableApp.ViewModels
 {
@@ -13,11 +14,30 @@ namespace timeTableApp.ViewModels
         public ICommand DeleteCommand { get; set; }
         public MainWinViewModel()
         {
-            DeleteCommand = new Command(() =>
+            DeleteCommand = new Command((args) =>
             {
-                //Models.Event SelectedEvent = new Models.Event();
-                //SelectedEvent = (Models.Event)arg;
-                //AllEvents.Remove(SelectedEvent);
+                Event SelectedEvent = new Event();
+                SelectedEvent = (Event)args;
+                if (args is Event)
+                {
+
+                    AllEvents.Remove(SelectedEvent);
+                    using (StreamWriter sw = new StreamWriter(timeTablePath, false))
+                    {
+                        foreach (Event e in AllEvents)
+                        {
+                            sw.WriteLine(e.Name);
+                            sw.WriteLine(e.Description);
+                            sw.WriteLine(e.Day);
+                            sw.WriteLine(e.Time);
+                            sw.WriteLine(e.EventCategory.Id);
+                            sw.WriteLine(e.EventCategory.CategoryName);
+                        }
+                        
+                        sw.Close();
+                    }
+                }
+                
             });
 
         }

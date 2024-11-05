@@ -17,7 +17,10 @@ namespace timeTableApp
             this.BindingContext = new MainWinViewModel();
         }
 
-        
+        public void just(object sender, EventArgs e)
+        {
+
+        }
 
     }
 
