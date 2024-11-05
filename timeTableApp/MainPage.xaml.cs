@@ -1,4 +1,4 @@
-﻿
+﻿using timeTableApp.ViewModels;
 
 namespace timeTableApp
 {
@@ -8,19 +8,16 @@ namespace timeTableApp
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new ViewModels.MainWinViewModel();
+            BindingContext = new MainWinViewModel();
         }
 
         
         public void Update(object sender, EventArgs e)
         {
-            this.BindingContext = new ViewModels.MainWinViewModel();
+            this.BindingContext = new MainWinViewModel();
         }
 
-        public void Update()
-        {
-            this.BindingContext = new ViewModels.MainWinViewModel();
-        }
+        
 
     }
 

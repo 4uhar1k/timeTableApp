@@ -13,7 +13,7 @@
 
         <ScrollView HorizontalScrollBarVisibility="Always" HeightRequest="600" WidthRequest="370">
             <StackLayout Spacing="40">
-                <CollectionView ItemsSource="{Binding Events[0]}" >
+                <CollectionView x:Name="mondayCol" ItemsSource="{Binding Events[0]}" >
                     <CollectionView.Header>
                         <Label Text="Monday" TextColor="Black" FontSize="30" />
                     </CollectionView.Header>
@@ -36,8 +36,8 @@
                                         <Label Grid.Row="2" Grid.Column="1" Text="{Binding Description}" FontSize="24" TextColor="Gray"/>
                                         <!--<Label Grid.Row="0" Grid.Column="1" Text="{Binding Day}" FontSize="24" TextColor="White"/>-->
                                         <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Time}" FontSize="20" TextColor="Black"/>
-                                        <Label Grid.Row="0" Grid.Column="1"  Text="{Binding EventCategory.Name}" FontSize="15" TextColor="Red"/>
-                                        <Button Grid.Row="0" Grid.Column="2" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
+                                        <Label Grid.Row="0" Grid.Column="1"  Text="{Binding EventCategory.CategoryName}" FontSize="15" TextColor="Red"/>
+                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding DeleteCommand}"  Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
                                     </Grid>
                                 </StackLayout>
                             </Border>
@@ -45,7 +45,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <CollectionView ItemsSource="{Binding Events[1]}">
+                <CollectionView x:Name="tuesdayCol" ItemsSource="{Binding Events[1]}">
                     <CollectionView.Header>
                         <Label Text="Tuesday" TextColor="Black" FontSize="30" />
                     </CollectionView.Header>
@@ -68,8 +68,8 @@
                                         <Label Grid.Row="2" Grid.Column="1" Text="{Binding Description}" FontSize="24" TextColor="Gray"/>
                                         <!--<Label Grid.Row="0" Grid.Column="1" Text="{Binding Day}" FontSize="24" TextColor="White"/>-->
                                         <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Time}" FontSize="20" TextColor="Black"/>
-                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.Name}" FontSize="15" TextColor="Red"/>
-                                        <Button Grid.Row="0" Grid.Column="2" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.CategoryName}" FontSize="15" TextColor="Red"/>
+                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding DeleteCommand}" CommandParameter="{Binding Source={x:Reference Name=tuesdayCol}, Path=SelectedItem}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
                                     </Grid>
                                 </StackLayout>
                             </Border>
@@ -77,7 +77,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <CollectionView ItemsSource="{Binding Events[2]}">
+                <CollectionView x:Name="wednesdayCol" ItemsSource="{Binding Events[2]}">
                     <CollectionView.Header>
                         <Label Text="Wednesday" TextColor="Black" FontSize="30" />
                     </CollectionView.Header>
@@ -100,8 +100,8 @@
                                         <Label Grid.Row="2" Grid.Column="1" Text="{Binding Description}" FontSize="24" TextColor="Gray"/>
                                         <!--<Label Grid.Row="0" Grid.Column="1" Text="{Binding Day}" FontSize="24" TextColor="White"/>-->
                                         <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Time}" FontSize="20" TextColor="Black"/>
-                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.Name}" FontSize="15" TextColor="Red"/>
-                                        <Button Grid.Row="0" Grid.Column="2" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.CategoryName}" FontSize="15" TextColor="Red"/>
+                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding DeleteCommand}" CommandParameter="{Binding Source={x:Reference Name=wednesdayCol}, Path=SelectedItem}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
                                     </Grid>
                                 </StackLayout>
                             </Border>
@@ -109,7 +109,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <CollectionView ItemsSource="{Binding Events[3]}">
+                <CollectionView x:Name="thursdayCol" ItemsSource="{Binding Events[3]}">
                     <CollectionView.Header>
                         <Label Text="Thursday" TextColor="Black" FontSize="30" />
                     </CollectionView.Header>
@@ -132,8 +132,8 @@
                                         <Label Grid.Row="2" Grid.Column="1" Text="{Binding Description}" FontSize="24" TextColor="Gray"/>
                                         <!--<Label Grid.Row="0" Grid.Column="1" Text="{Binding Day}" FontSize="24" TextColor="White"/>-->
                                         <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Time}" FontSize="20" TextColor="Black"/>
-                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.Name}" FontSize="15" TextColor="Red"/>
-                                        <Button Grid.Row="0" Grid.Column="2" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.CategoryName}" FontSize="15" TextColor="Red"/>
+                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding DeleteCommand}" CommandParameter="{Binding Source={x:Reference Name=thursdayCol}, Path=SelectedItem}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
                                     </Grid>
                                 </StackLayout>
                             </Border>
@@ -141,7 +141,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <CollectionView ItemsSource="{Binding Events[4]}" >
+                <CollectionView x:Name="fridayCol" ItemsSource="{Binding Events[4]}" >
                     <CollectionView.Header>
                         <Label Text="Friday" TextColor="Black" FontSize="30" />
                     </CollectionView.Header>
@@ -164,8 +164,8 @@
                                         <Label Grid.Row="2" Grid.Column="1" Text="{Binding Description}" FontSize="24" TextColor="Gray"/>
                                         <!--<Label Grid.Row="0" Grid.Column="1" Text="{Binding Day}" FontSize="24" TextColor="White"/>-->
                                         <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Time}" FontSize="20" TextColor="Black"/>
-                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.Name}" FontSize="15" TextColor="Red"/>
-                                        <Button Grid.Row="0" Grid.Column="2" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.CategoryName}" FontSize="15" TextColor="Red"/>
+                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding DeleteCommand}" CommandParameter="{Binding Source={x:Reference Name=fridayCol}, Path=SelectedItem}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
                                     </Grid>
                                 </StackLayout>
                             </Border>
@@ -173,7 +173,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <CollectionView ItemsSource="{Binding Events[5]}">
+                <CollectionView x:Name="saturdayCol" ItemsSource="{Binding Events[5]}">
                     <CollectionView.Header>
                         <Label Text="Saturday" TextColor="Black" FontSize="30" />
                     </CollectionView.Header>
@@ -196,8 +196,8 @@
                                         <Label Grid.Row="2" Grid.Column="1" Text="{Binding Description}" FontSize="24" TextColor="Gray"/>
                                         <!--<Label Grid.Row="0" Grid.Column="1" Text="{Binding Day}" FontSize="24" TextColor="White"/>-->
                                         <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Time}" FontSize="20" TextColor="Black"/>
-                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.Name}" FontSize="15" TextColor="Red"/>
-                                        <Button Grid.Row="0" Grid.Column="2" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.CategoryName}" FontSize="15" TextColor="Red"/>
+                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding DeleteCommand}" CommandParameter="{Binding Source={x:Reference Name=saturdayCol}, Path=SelectedItem}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
                                     </Grid>
                                 </StackLayout>
                             </Border>
@@ -205,7 +205,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <CollectionView ItemsSource="{Binding Events[6]}">
+                <CollectionView x:Name="sundayCol" ItemsSource="{Binding Events[6]}">
                     <CollectionView.Header>
                         <Label Text="Sunday" TextColor="Black" FontSize="30" />
                     </CollectionView.Header>
@@ -228,8 +228,8 @@
                                         <Label Grid.Row="2" Grid.Column="1" Text="{Binding Description}" FontSize="24" TextColor="Gray"/>
                                         <!--<Label Grid.Row="0" Grid.Column="1" Text="{Binding Day}" FontSize="24" TextColor="White"/>-->
                                         <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Time}" FontSize="20" TextColor="Black"/>
-                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.Name}" FontSize="15" TextColor="Red"/>
-                                        <Button Grid.Row="0" Grid.Column="2" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding EventCategory.CategoryName}" FontSize="15" TextColor="Red"/>
+                                        <Button Grid.Row="0" Grid.Column="2" Command="{Binding DeleteCommand}" CommandParameter="{Binding Events[6]}" Padding="-50" Margin="-40,0,0,0" Text="-" BackgroundColor="Red" TextColor="White" FontSize="20"  HeightRequest="30" WidthRequest="70"/>
                                     </Grid>
                                 </StackLayout>
                             </Border>

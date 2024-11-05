@@ -1,3 +1,5 @@
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Maui.Views;
 using timeTableApp.ViewModels;
 
 namespace timeTableApp;
@@ -9,7 +11,6 @@ public partial class addEvent : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = thisContext;
-
     }
 
 	public async void goBack(object sender, EventArgs e)
@@ -21,17 +22,43 @@ public partial class addEvent : ContentPage
         categoryPicker.SelectedItem = null;
         beginTimePicker.SelectedItem = null;
         endTimePicker.SelectedItem = null;
+        //Application.Current.MainPage.BindingContext = new MainWinViewModel();
     }
 
     public async void addCategory(object sender, EventArgs e)
     {
-        var picker = (Picker)sender;
-        object selectedItem = picker.SelectedItem;
-        if (selectedItem.ToString() == "Add new category...")
-        {            
-            await Navigation.PushAsync(new AddCategory());
+        try
+        {
+            if (categoryPicker.SelectedItem.ToString() == "Add new category...")
+            {
+                categoryPicker.SelectedItem = null;
+                AddCategory popup = new AddCategory();
+                this.ShowPopup(popup);
+                popup.Closed += UpdateCategories;
+                
+            }
         }
+        catch
+        {
+
+        }
+        
         //picker.SelectedItem = "None";
 
+    }
+
+    public void UpdateCategories(object sender, PopupClosedEventArgs e)
+    {
+        string nametxt = nameEditor.Text;
+        string desctxt = descriptionEditor.Text;
+        object daypick = dayPicker.SelectedItem;
+        object begtimepick = beginTimePicker.SelectedItem;
+        object endtimepick = endTimePicker.SelectedItem;
+        this.BindingContext = new EventViewModel();
+        nameEditor.Text = nametxt;
+        descriptionEditor.Text = desctxt;
+        dayPicker.SelectedItem = daypick;
+        beginTimePicker.SelectedItem = begtimepick;
+        endTimePicker.SelectedItem = endtimepick;
     }
 }

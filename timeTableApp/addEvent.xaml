@@ -25,12 +25,8 @@
                     <x:String>Sunday</x:String>
                 </Picker.Items>
             </Picker>
-            <Picker Grid.Column="0" Grid.Row="1" x:Name="categoryPicker" SelectedIndexChanged="addCategory"  FontSize="20" Title="Category" WidthRequest="125" HorizontalTextAlignment="Center" >
-                <Picker.Items>
-                    <x:String>None</x:String>
-                    <x:String>Add new category...</x:String>
-                    
-                </Picker.Items>
+            <Picker Grid.Column="0" Grid.Row="1" x:Name="categoryPicker" ItemsSource="{Binding NamesOfCategories}" SelectedItem="{Binding CategoryName}" SelectedIndexChanged="addCategory" FontSize="20" Title="Select a category" WidthRequest="125" HorizontalTextAlignment="Center" >
+                
             </Picker>
             <Picker Grid.Column="1" Grid.Row="0" x:Name="beginTimePicker" SelectedItem="{Binding BeginTime}" FontSize="20" Title="From" WidthRequest="100" HorizontalTextAlignment="Center">
                 <Picker.Items>
@@ -132,6 +128,7 @@
                     <x:String>23:45</x:String>
                 </Picker.Items>
             </Picker>
+            
             <Picker Grid.Column="1" Grid.Row="1" x:Name="endTimePicker" SelectedItem="{Binding EndTime}" FontSize="20" Title="To" WidthRequest="100" HorizontalTextAlignment="Center">
                 <Picker.Items>
                     <x:String>00:00</x:String>
@@ -238,8 +235,6 @@
        
         <Editor x:Name="nameEditor" Placeholder="Please enter the name..."  Text="{Binding Name}"  HeightRequest="60" Margin="0,50,0,0" FontSize="25"></Editor>
         <Editor x:Name="descriptionEditor" Placeholder="Please enter the description..." Text="{Binding Description}" HeightRequest="60" Margin="0,50,0,0" FontSize="25"></Editor>
-        <!--<Editor x:Name="dayEditor" Placeholder="Please enter the description..." Text="{Binding Day}" HeightRequest="60" Margin="0,50,0,0" FontSize="25"></Editor>-->
-        <!--<Editor x:Name="timeEditor" Placeholder="Please enter the time..." Text="{Binding Time}" HeightRequest="60" Margin="0,50,0,0" FontSize="25"></Editor>-->
-        <Button Text="Add" Command="{Binding AddCommand}" Clicked="goBack"></Button>
+        <Button Text="Add" Command="{Binding AddEvent}" Clicked="goBack"></Button>
     </VerticalStackLayout>
 </ContentPage>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using timeTableApp.Models;
 
 namespace timeTableApp.ViewModels
 {
@@ -13,24 +14,126 @@ namespace timeTableApp.ViewModels
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         string name, description, day, time, begintime, endtime;
-        Models.Category category;
+        Category category;
+        bool basicExists;
         public string timeTablePath = Path.Combine(FileSystem.AppDataDirectory, "timetable.txt");
-        public ObservableCollection<Models.Event> AllEvents { get; set; }
-        
-        public ObservableCollection<Models.Event>[] Events { get; set; }
+        public string categoriesPath = Path.Combine(FileSystem.AppDataDirectory, "categories.txt");
+        public int globalId;
+        public ObservableCollection<Event> AllEvents { get; set; }
+        public ObservableCollection<Category> Categories { get; set; }
+        public ObservableCollection<string> NamesOfCategories { get; set; }
+        public ObservableCollection<Event>[] Events { get; set; }
 
         public ViewModelBase()
         {
-            AllEvents = new ObservableCollection<Models.Event>();
-            Events = new ObservableCollection<Models.Event>[7] { new ObservableCollection<Models.Event>(), new ObservableCollection<Models.Event>(), new ObservableCollection<Models.Event>(), new ObservableCollection<Models.Event>(), new ObservableCollection<Models.Event>(), new ObservableCollection<Models.Event>(), new ObservableCollection<Models.Event>() };
+            AllEvents = new ObservableCollection<Event>();
+            Categories = new ObservableCollection<Category>();
+            NamesOfCategories = new ObservableCollection<string>();
+            Events = new ObservableCollection<Event>[7] { new ObservableCollection<Event>(), new ObservableCollection<Event>(), new ObservableCollection<Event>(), new ObservableCollection<Event>(), new ObservableCollection<Event>(), new ObservableCollection<Event>(), new ObservableCollection<Event>() };
             name = "";
             description = "";
             day = "";
             time = "";
             begintime = "";
             endtime = "";
-            category = new Models.Category();
-            
+            category = new Category();
+            basicExists = false;
+            globalId = 0;
+
+            if (!File.Exists(timeTablePath))
+            {
+                File.Create(timeTablePath);
+            }
+            if (!File.Exists(categoriesPath))
+            {
+                File.Create(categoriesPath);
+            }
+            using (StreamReader sr = new StreamReader(timeTablePath))
+            {
+                string? line;
+                string catName;
+                int catId;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    Event e = new Event();
+                    e.Name = line;
+                    e.Description = sr.ReadLine();
+                    e.Day = sr.ReadLine();
+                    e.Time = sr.ReadLine();
+                    catId = Convert.ToInt32(sr.ReadLine());
+                    catName = sr.ReadLine();
+                    if (catId == 0 && catName == "")
+                    {
+                        e.EventCategory = new Category() { Id = catId, CategoryName = "without category" };
+                    }
+                    else
+                    {
+                        e.EventCategory = new Category() { Id = catId, CategoryName = catName };
+                    }
+
+                    AllEvents.Add(e);
+                    switch (e.Day)
+                    {
+                        case "Monday":
+                            Events[0].Add(e);
+                            break;
+                        case "Tuesday":
+                            Events[1].Add(e);
+                            break;
+                        case "Wednesday":
+                            Events[2].Add(e);
+                            break;
+                        case "Thursday":
+                            Events[3].Add(e);
+                            break;
+                        case "Friday":
+                            Events[4].Add(e);
+                            break;
+                        case "Saturday":
+                            Events[5].Add(e);
+                            break;
+                        case "Sunday":
+                            Events[6].Add(e);
+                            break;
+
+                    }
+                }
+                sr.Close();
+            }
+
+            using (StreamReader sr = new StreamReader(categoriesPath))
+            {
+                string? line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    Category e = new Category();
+                    globalId++;
+                    e.Id = Convert.ToInt32(line);
+                    e.CategoryName = sr.ReadLine();
+                    if (e.CategoryName == "None")
+                        basicExists = true;
+                    Categories.Add(e);
+                    NamesOfCategories.Add(e.CategoryName);
+                }
+                sr.Close();
+            }
+            if (!basicExists)
+            {
+                using (StreamWriter sw = new StreamWriter(categoriesPath, false))
+                {
+                    sw.WriteLine(0);
+                    sw.WriteLine("None");
+                    sw.WriteLine(0);
+                    sw.WriteLine("Add new category...");
+                    foreach (Category cat in Categories)
+                    {
+                        sw.WriteLine(cat.Id);
+                        sw.WriteLine(cat.CategoryName);
+                    }
+                    sw.Close();
+                }
+            }
+
         }
         
 
@@ -112,7 +215,7 @@ namespace timeTableApp.ViewModels
             }
         }
 
-        public Models.Category EventCategory
+        public Category EventCategory
         {
             get => category;
             set
@@ -124,6 +227,8 @@ namespace timeTableApp.ViewModels
                 }
             }
         }
+
+        
 
         protected void OnPropertyChanged([CallerMemberName] string property = "")
         {
