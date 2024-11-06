@@ -235,6 +235,6 @@
        
         <Editor x:Name="nameEditor" Placeholder="Please enter the name..."  Text="{Binding Name}"  HeightRequest="60" Margin="0,50,0,0" FontSize="25"></Editor>
         <Editor x:Name="descriptionEditor" Placeholder="Please enter the description..." Text="{Binding Description}" HeightRequest="60" Margin="0,50,0,0" FontSize="25"></Editor>
-        <Button Text="Add" Command="{Binding AddEvent}" Clicked="goBack"></Button>
+        <Button x:FieldModifier="public" x:Name="saveButton" Text="Add" Command="{Binding AddEvent}" Clicked="goBack"></Button>
     </VerticalStackLayout>
 </ContentPage>

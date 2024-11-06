@@ -27,6 +27,13 @@ namespace timeTableApp
                 addEvent newPage = new addEvent(selectedEvent);
                 newPage.Title = "Editing...";
                 await Navigation.PushAsync(newPage);
+                newPage.saveButton.Clicked += Update;
+            }
+            else
+            {
+                addEvent newPage = new addEvent();
+                await Navigation.PushAsync(newPage);
+                newPage.saveButton.Clicked += Update;
             }
             
         }
