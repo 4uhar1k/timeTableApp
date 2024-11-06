@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Maui.Core.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace timeTableApp.ViewModels
     public class MainWinViewModel : ViewModelBase
     {
         public ICommand DeleteCommand { get; set; }
+        public ICommand EditCommand { get; set; }
         public MainWinViewModel()
         {
             DeleteCommand = new Command((args) =>
@@ -22,6 +24,13 @@ namespace timeTableApp.ViewModels
                 {
 
                     AllEvents.Remove(SelectedEvent);
+                    Events[0] = AllEvents.Where(n => n.Day == "Monday").ToObservableCollection();
+                    Events[1] = AllEvents.Where(n => n.Day == "Tuesday").ToObservableCollection();
+                    Events[2] = AllEvents.Where(n => n.Day == "Wednesday").ToObservableCollection();
+                    Events[3] = AllEvents.Where(n => n.Day == "Thursday").ToObservableCollection();
+                    Events[4] = AllEvents.Where(n => n.Day == "Friday").ToObservableCollection();
+                    Events[5] = AllEvents.Where(n => n.Day == "Saturday").ToObservableCollection();
+                    Events[6] = AllEvents.Where(n => n.Day == "Sunday").ToObservableCollection();
                     using (StreamWriter sw = new StreamWriter(timeTablePath, false))
                     {
                         foreach (Event e in AllEvents)
@@ -38,6 +47,18 @@ namespace timeTableApp.ViewModels
                     }
                 }
                 
+            });
+
+            EditCommand = new Command((args) =>
+            {
+                Event SelectedEvent = new Event();
+                SelectedEvent = (Event)args;
+                if (args is Event)
+                {
+                    EventToEdit = SelectedEvent;
+                    EventToSave = SelectedEvent;
+                }
+
             });
 
         }

@@ -25,6 +25,9 @@ namespace timeTableApp.ViewModels
         public ObservableCollection<string> NamesOfCategories { get; set; }
         public ObservableCollection<Event>[] Events { get; set; }
 
+        public Event EventToEdit { get; set; }
+        public Event EventToSave { get; set; }
+
         public ViewModelBase()
         {
             AllEvents = new ObservableCollection<Event>();
@@ -40,6 +43,8 @@ namespace timeTableApp.ViewModels
             category = new Category();
             basicExists = false;
             globalId = 0;
+            EventToEdit = new Event();
+            //EventToSave = new Event();
 
             if (!File.Exists(timeTablePath))
             {

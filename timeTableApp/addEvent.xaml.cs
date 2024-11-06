@@ -1,7 +1,7 @@
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Views;
 using timeTableApp.ViewModels;
-
+using timeTableApp.Models;
 namespace timeTableApp;
 
 public partial class addEvent : ContentPage
@@ -11,9 +11,28 @@ public partial class addEvent : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = thisContext;
+        
     }
 
-	public async void goBack(object sender, EventArgs e)
+    public addEvent(Event e)
+    {
+        InitializeComponent();
+        BindingContext = thisContext;
+        if (e != null)
+        {
+            thisContext.EventToEdit = e;
+            
+            nameEditor.Text = e.Name;
+            descriptionEditor.Text = e.Description;
+            dayPicker.SelectedItem = e.Day;
+            categoryPicker.SelectedItem = e.EventCategory.CategoryName;
+            string[] times = e.Time.Split('-');
+            beginTimePicker.SelectedItem = times[0];
+            endTimePicker.SelectedItem = times[1];
+        }
+    }
+
+    public async void goBack(object sender, EventArgs e)
 	{
 		await DisplayAlert("Ready!", "Event has been successfully added", "OK");
         nameEditor.Text = "";
@@ -22,6 +41,10 @@ public partial class addEvent : ContentPage
         categoryPicker.SelectedItem = null;
         beginTimePicker.SelectedItem = null;
         endTimePicker.SelectedItem = null;
+        if (thisContext.EventToEdit != null)
+        {
+            await Navigation.PopAsync();
+        }
         //Application.Current.MainPage.BindingContext = new MainWinViewModel();
     }
 

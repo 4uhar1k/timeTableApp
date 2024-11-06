@@ -43,17 +43,31 @@ namespace timeTableApp.ViewModels
                 Category newCat = new Category();
                 newCat = Categories.First(n => n.CategoryName == CategoryName);
                 newEvent.EventCategory = newCat;
+                try
+                {
+                    Event oldEvent = new Event();
+                    oldEvent = AllEvents.First(e => e.Name == EventToEdit.Name & e.Description == EventToEdit.Description & e.Day == EventToEdit.Day & e.Time == EventToEdit.Time & e.EventCategory.Id == EventToEdit.EventCategory.Id & e.EventCategory.CategoryName == EventToEdit.EventCategory.CategoryName);
+                    AllEvents.Remove(oldEvent);
+                }
+                catch
+                {
+                }
+                
 
                 AllEvents.Add(newEvent);
 
-                using (StreamWriter sw = new StreamWriter(timeTablePath, true))
+                using (StreamWriter sw = new StreamWriter(timeTablePath, false))
                 {
-                    sw.WriteLine(newEvent.Name);
-                    sw.WriteLine(newEvent.Description);
-                    sw.WriteLine(newEvent.Day);
-                    sw.WriteLine(newEvent.Time);
-                    sw.WriteLine(newEvent.EventCategory.Id);
-                    sw.WriteLine(newEvent.EventCategory.CategoryName);
+                    foreach (Event e in AllEvents)
+                    {
+                        sw.WriteLine(e.Name);
+                        sw.WriteLine(e.Description);
+                        sw.WriteLine(e.Day);
+                        sw.WriteLine(e.Time);
+                        sw.WriteLine(e.EventCategory.Id);
+                        sw.WriteLine(e.EventCategory.CategoryName);
+                    }
+                    
                     sw.Close();
                 }
                 
