@@ -64,19 +64,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="addEvent.xaml.cs">
+	  <Compile Update="Views\addEvent.xaml.cs">
 	    <DependentUpon>addEvent.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="AddCategory.xaml">
+	  <MauiXaml Update="Views\AddCategory.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="addEvent.xaml">
+	  <MauiXaml Update="Views\addEvent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="SettingsPage.xaml">
+	  <MauiXaml Update="Views\SettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

@@ -40,9 +40,18 @@ namespace timeTableApp.ViewModels
                     Time = $"{BeginTime}-{EndTime}",
                     
                 };
-                Category newCat = new Category();
-                newCat = Categories.First(n => n.CategoryName == CategoryName);
-                newEvent.EventCategory = newCat;
+                try
+                {
+                    Category newCat = new Category();
+                    newCat = Categories.First(n => n.CategoryName == CategoryName);
+                    newEvent.EventCategory = newCat;
+                }
+                catch
+                {
+                    newEvent.EventCategory.Id = 0;
+                    newEvent.EventCategory.CategoryName = "";
+                }
+                
                 try
                 {
                     Event oldEvent = new Event();
