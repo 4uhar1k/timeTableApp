@@ -10,8 +10,7 @@ public partial class addEvent : ContentPage
 	public addEvent()
 	{
 		InitializeComponent();
-		BindingContext = thisContext;
-        
+		BindingContext = thisContext;        
     }
 
     public addEvent(Event e)
@@ -27,8 +26,8 @@ public partial class addEvent : ContentPage
             dayPicker.SelectedItem = e.Day;
             categoryPicker.SelectedItem = e.EventCategory.CategoryName;
             string[] times = e.Time.Split('-');
-            beginTimePicker.SelectedItem = times[0];
-            endTimePicker.SelectedItem = times[1];
+            beginTimePicker.Text = times[0];
+            endTimePicker.Text = times[1];
         }
     }
 
@@ -39,8 +38,8 @@ public partial class addEvent : ContentPage
 		descriptionEditor.Text = "";
 		dayPicker.SelectedItem = null;
         categoryPicker.SelectedItem = null;
-        beginTimePicker.SelectedItem = null;
-        endTimePicker.SelectedItem = null;
+        beginTimePicker.Text = "";
+        endTimePicker.Text = "";
         if (thisContext.EventToEdit != null)
         {
             await Navigation.PopAsync();
@@ -75,13 +74,25 @@ public partial class addEvent : ContentPage
         string nametxt = nameEditor.Text;
         string desctxt = descriptionEditor.Text;
         object daypick = dayPicker.SelectedItem;
-        object begtimepick = beginTimePicker.SelectedItem;
-        object endtimepick = endTimePicker.SelectedItem;
+        string begtimepick = beginTimePicker.Text;
+        string endtimepick = endTimePicker.Text;
         this.BindingContext = new EventViewModel();
         nameEditor.Text = nametxt;
         descriptionEditor.Text = desctxt;
         dayPicker.SelectedItem = daypick;
-        beginTimePicker.SelectedItem = begtimepick;
-        endTimePicker.SelectedItem = endtimepick;
+        beginTimePicker.Text = begtimepick;
+        endTimePicker.Text = endtimepick;
+    }
+
+    public void TextChanged(object sender, TextChangedEventArgs e)
+    {
+        Entry entry = (Entry)sender;
+        string text = entry.Text;
+        if (text.Length==4 && !text.Contains(':'))
+        {
+            text = $"{text.Substring(0,2)}:{text.Substring(2,2)}";            
+        }
+        entry.Text = text;
+        sender = entry;
     }
 }

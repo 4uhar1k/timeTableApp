@@ -14,7 +14,7 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Picker Grid.Column="0" Grid.Row="0" x:Name="dayPicker" SelectedItem="{Binding Day}" FontSize="20" Title="Day" WidthRequest="125" HorizontalTextAlignment="Center" >
+            <Picker Grid.Column="0" Grid.Row="0" x:Name="dayPicker" SelectedItem="{Binding Day}" FontSize="20" Title="Day" TitleColor="Gray" WidthRequest="125" HorizontalTextAlignment="Center" >
                 <Picker.Items>
                     <x:String>Monday</x:String>
                     <x:String>Tuesday</x:String>
@@ -25,210 +25,14 @@
                     <x:String>Sunday</x:String>
                 </Picker.Items>
             </Picker>
-            <Picker Grid.Column="0" Grid.Row="1" x:Name="categoryPicker" ItemsSource="{Binding NamesOfCategories}" SelectedItem="{Binding CategoryName}" SelectedIndexChanged="addCategory" FontSize="20" Title="Select a category" WidthRequest="125" HorizontalTextAlignment="Center" >
+            <Picker Grid.Column="0" Grid.Row="1" TitleColor="Gray" x:Name="categoryPicker" ItemsSource="{Binding NamesOfCategories}" SelectedItem="{Binding CategoryName}" SelectedIndexChanged="addCategory" FontSize="20" Title="Select a category" WidthRequest="125" HorizontalTextAlignment="Center" >
                 
             </Picker>
-            <Picker Grid.Column="1" Grid.Row="0" x:Name="beginTimePicker" SelectedItem="{Binding BeginTime}" FontSize="20" Title="From" WidthRequest="100" HorizontalTextAlignment="Center">
-                <Picker.Items>
-                    <x:String>00:00</x:String>
-                    <x:String>00:15</x:String>
-                    <x:String>00:30</x:String>
-                    <x:String>00:45</x:String>
-                    <x:String>01:00</x:String>
-                    <x:String>01:15</x:String>
-                    <x:String>01:30</x:String>
-                    <x:String>01:45</x:String>
-                    <x:String>02:00</x:String>
-                    <x:String>02:15</x:String>
-                    <x:String>02:30</x:String>
-                    <x:String>02:45</x:String>
-                    <x:String>03:00</x:String>
-                    <x:String>03:15</x:String>
-                    <x:String>03:30</x:String>
-                    <x:String>03:45</x:String>
-                    <x:String>04:00</x:String>
-                    <x:String>04:15</x:String>
-                    <x:String>04:30</x:String>
-                    <x:String>04:45</x:String>
-                    <x:String>05:00</x:String>
-                    <x:String>05:15</x:String>
-                    <x:String>05:30</x:String>
-                    <x:String>05:45</x:String>
-                    <x:String>06:00</x:String>
-                    <x:String>06:15</x:String>
-                    <x:String>06:30</x:String>
-                    <x:String>06:45</x:String>
-                    <x:String>07:00</x:String>
-                    <x:String>07:15</x:String>
-                    <x:String>07:30</x:String>
-                    <x:String>07:45</x:String>
-                    <x:String>08:00</x:String>
-                    <x:String>08:15</x:String>
-                    <x:String>08:30</x:String>
-                    <x:String>08:45</x:String>
-                    <x:String>09:00</x:String>
-                    <x:String>09:15</x:String>
-                    <x:String>09:30</x:String>
-                    <x:String>09:45</x:String>
-                    <x:String>10:00</x:String>
-                    <x:String>10:15</x:String>
-                    <x:String>10:30</x:String>
-                    <x:String>10:45</x:String>
-                    <x:String>11:00</x:String>
-                    <x:String>11:15</x:String>
-                    <x:String>11:30</x:String>
-                    <x:String>11:45</x:String>
-                    <x:String>12:00</x:String>
-                    <x:String>12:15</x:String>
-                    <x:String>12:30</x:String>
-                    <x:String>12:45</x:String>
-                    <x:String>13:00</x:String>
-                    <x:String>13:15</x:String>
-                    <x:String>13:30</x:String>
-                    <x:String>13:45</x:String>
-                    <x:String>14:00</x:String>
-                    <x:String>14:15</x:String>
-                    <x:String>14:30</x:String>
-                    <x:String>14:45</x:String>
-                    <x:String>15:00</x:String>
-                    <x:String>15:15</x:String>
-                    <x:String>15:30</x:String>
-                    <x:String>15:45</x:String>
-                    <x:String>16:00</x:String>
-                    <x:String>16:15</x:String>
-                    <x:String>16:30</x:String>
-                    <x:String>16:45</x:String>
-                    <x:String>17:00</x:String>
-                    <x:String>17:15</x:String>
-                    <x:String>17:30</x:String>
-                    <x:String>17:45</x:String>
-                    <x:String>18:00</x:String>
-                    <x:String>18:15</x:String>
-                    <x:String>18:30</x:String>
-                    <x:String>18:45</x:String>
-                    <x:String>19:00</x:String>
-                    <x:String>19:15</x:String>
-                    <x:String>19:30</x:String>
-                    <x:String>19:45</x:String>
-                    <x:String>20:00</x:String>
-                    <x:String>20:15</x:String>
-                    <x:String>20:30</x:String>
-                    <x:String>20:45</x:String>
-                    <x:String>21:00</x:String>
-                    <x:String>21:15</x:String>
-                    <x:String>21:30</x:String>
-                    <x:String>21:45</x:String>
-                    <x:String>22:00</x:String>
-                    <x:String>22:15</x:String>
-                    <x:String>22:30</x:String>
-                    <x:String>22:45</x:String>
-                    <x:String>23:00</x:String>
-                    <x:String>23:15</x:String>
-                    <x:String>23:30</x:String>
-                    <x:String>23:45</x:String>
-                </Picker.Items>
-            </Picker>
             
-            <Picker Grid.Column="1" Grid.Row="1" x:Name="endTimePicker" SelectedItem="{Binding EndTime}" FontSize="20" Title="To" WidthRequest="100" HorizontalTextAlignment="Center">
-                <Picker.Items>
-                    <x:String>00:00</x:String>
-                    <x:String>00:15</x:String>
-                    <x:String>00:30</x:String>
-                    <x:String>00:45</x:String>
-                    <x:String>01:00</x:String>
-                    <x:String>01:15</x:String>
-                    <x:String>01:30</x:String>
-                    <x:String>01:45</x:String>
-                    <x:String>02:00</x:String>
-                    <x:String>02:15</x:String>
-                    <x:String>02:30</x:String>
-                    <x:String>02:45</x:String>
-                    <x:String>03:00</x:String>
-                    <x:String>03:15</x:String>
-                    <x:String>03:30</x:String>
-                    <x:String>03:45</x:String>
-                    <x:String>04:00</x:String>
-                    <x:String>04:15</x:String>
-                    <x:String>04:30</x:String>
-                    <x:String>04:45</x:String>
-                    <x:String>05:00</x:String>
-                    <x:String>05:15</x:String>
-                    <x:String>05:30</x:String>
-                    <x:String>05:45</x:String>
-                    <x:String>06:00</x:String>
-                    <x:String>06:15</x:String>
-                    <x:String>06:30</x:String>
-                    <x:String>06:45</x:String>
-                    <x:String>07:00</x:String>
-                    <x:String>07:15</x:String>
-                    <x:String>07:30</x:String>
-                    <x:String>07:45</x:String>
-                    <x:String>08:00</x:String>
-                    <x:String>08:15</x:String>
-                    <x:String>08:30</x:String>
-                    <x:String>08:45</x:String>
-                    <x:String>09:00</x:String>
-                    <x:String>09:15</x:String>
-                    <x:String>09:30</x:String>
-                    <x:String>09:45</x:String>
-                    <x:String>10:00</x:String>
-                    <x:String>10:15</x:String>
-                    <x:String>10:30</x:String>
-                    <x:String>10:45</x:String>
-                    <x:String>11:00</x:String>
-                    <x:String>11:15</x:String>
-                    <x:String>11:30</x:String>
-                    <x:String>11:45</x:String>
-                    <x:String>12:00</x:String>
-                    <x:String>12:15</x:String>
-                    <x:String>12:30</x:String>
-                    <x:String>12:45</x:String>
-                    <x:String>13:00</x:String>
-                    <x:String>13:15</x:String>
-                    <x:String>13:30</x:String>
-                    <x:String>13:45</x:String>
-                    <x:String>14:00</x:String>
-                    <x:String>14:15</x:String>
-                    <x:String>14:30</x:String>
-                    <x:String>14:45</x:String>
-                    <x:String>15:00</x:String>
-                    <x:String>15:15</x:String>
-                    <x:String>15:30</x:String>
-                    <x:String>15:45</x:String>
-                    <x:String>16:00</x:String>
-                    <x:String>16:15</x:String>
-                    <x:String>16:30</x:String>
-                    <x:String>16:45</x:String>
-                    <x:String>17:00</x:String>
-                    <x:String>17:15</x:String>
-                    <x:String>17:30</x:String>
-                    <x:String>17:45</x:String>
-                    <x:String>18:00</x:String>
-                    <x:String>18:15</x:String>
-                    <x:String>18:30</x:String>
-                    <x:String>18:45</x:String>
-                    <x:String>19:00</x:String>
-                    <x:String>19:15</x:String>
-                    <x:String>19:30</x:String>
-                    <x:String>19:45</x:String>
-                    <x:String>20:00</x:String>
-                    <x:String>20:15</x:String>
-                    <x:String>20:30</x:String>
-                    <x:String>20:45</x:String>
-                    <x:String>21:00</x:String>
-                    <x:String>21:15</x:String>
-                    <x:String>21:30</x:String>
-                    <x:String>21:45</x:String>
-                    <x:String>22:00</x:String>
-                    <x:String>22:15</x:String>
-                    <x:String>22:30</x:String>
-                    <x:String>22:45</x:String>
-                    <x:String>23:00</x:String>
-                    <x:String>23:15</x:String>
-                    <x:String>23:30</x:String>
-                    <x:String>23:45</x:String>
-                </Picker.Items>
-            </Picker>
+            <Entry x:Name="beginTimePicker" Grid.Column="1" Grid.Row="0" FontSize="20" WidthRequest="100" PlaceholderColor="Gray" HorizontalTextAlignment="Center" Placeholder="From" Text="{Binding BeginTime}" TextChanged="TextChanged" />
+            <Entry x:Name="endTimePicker" Grid.Column="1" Grid.Row="1" FontSize="20" WidthRequest="100" HorizontalTextAlignment="Center" PlaceholderColor="Gray" Placeholder="To" Text="{Binding EndTime}" TextChanged="TextChanged" />
+
+            
 
             
         </Grid>
