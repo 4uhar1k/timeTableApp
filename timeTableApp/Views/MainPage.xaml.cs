@@ -9,6 +9,7 @@ namespace timeTableApp
         {
             InitializeComponent();
             BindingContext = new MainWinViewModel();
+            
         }
 
         

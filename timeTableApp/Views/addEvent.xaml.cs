@@ -7,6 +7,7 @@ namespace timeTableApp;
 public partial class addEvent : ContentPage
 {
 	EventViewModel thisContext = new EventViewModel();
+    public Event CurEventToEdit { get; set; }
 	public addEvent()
 	{
 		InitializeComponent();
@@ -20,7 +21,7 @@ public partial class addEvent : ContentPage
         if (e != null)
         {
             thisContext.EventToEdit = e;
-            
+            CurEventToEdit = e;
             nameEditor.Text = e.Name;
             descriptionEditor.Text = e.Description;
             dayPicker.SelectedItem = e.Day;
@@ -32,20 +33,28 @@ public partial class addEvent : ContentPage
     }
 
     public async void goBack(object sender, EventArgs e)
-	{
-		await DisplayAlert("Ready!", "Event has been successfully added", "OK");
-        nameEditor.Text = "";
-		descriptionEditor.Text = "";
-		dayPicker.SelectedItem = null;
-        categoryPicker.SelectedItem = null;
-        beginTimePicker.Text = "";
-        endTimePicker.Text = "";
-        if (thisContext.EventToEdit != null)
+    {
+        if (dayPicker.SelectedItem!=null & nameEditor.Text != "" & CorrectTime(beginTimePicker.Text, endTimePicker.Text)==true)
         {
-            await Navigation.PopAsync();
+            await DisplayAlert("Ready!", "Event has been successfully added", "OK");
+            nameEditor.Text = "";
+            descriptionEditor.Text = "";
+            dayPicker.SelectedItem = null;
+            categoryPicker.SelectedItem = null;
+            beginTimePicker.Text = "";
+            endTimePicker.Text = "";
+            if (thisContext.EventToEdit != null)
+            {
+                await Navigation.PopAsync();
+            }
         }
-        //Application.Current.MainPage.BindingContext = new MainWinViewModel();
+        else
+        {            
+            await DisplayAlert("Error!", "Invalid data.", "OK");
+        }
     }
+
+    
 
     public async void addCategory(object sender, EventArgs e)
     {
@@ -64,8 +73,6 @@ public partial class addEvent : ContentPage
         {
 
         }
-        
-        //picker.SelectedItem = "None";
 
     }
 
@@ -90,9 +97,49 @@ public partial class addEvent : ContentPage
         string text = entry.Text;
         if (text.Length==4 && !text.Contains(':'))
         {
-            text = $"{text.Substring(0,2)}:{text.Substring(2,2)}";            
+            text = $"{text.Substring(0,2)}:{text.Substring(2,2)}";
+            if (entry == beginTimePicker)
+            {
+                endTimePicker.Focus();
+            }
+            else
+            {
+                nameEditor.Focus();
+            }
+        }
+        else if (text.Length == 4 && text.Contains(':') && text.IndexOf(':')==1)
+        {
+            text = $"0{text.Substring(0, 1)}:{text.Substring(2, 2)}";
+            if (entry == beginTimePicker)
+            {
+                endTimePicker.Focus();
+            }
+            else
+            {
+                nameEditor.Focus();
+            }
         }
         entry.Text = text;
         sender = entry;
+    }
+
+    public bool CorrectTime(string begintime, string endtime)
+    {
+        try
+        {
+            if (begintime.Length == 5 & endtime.Length == 5 & Convert.ToInt32(begintime.Substring(0, 2)) < 24 & Convert.ToInt32(begintime.Substring(0, 2)) >= 0 & Convert.ToInt32(begintime.Substring(3, 2)) <= 59 & Convert.ToInt32(begintime.Substring(3, 2)) >= 0 & Convert.ToInt32(endtime.Substring(0, 2)) < 24 & Convert.ToInt32(endtime.Substring(0, 2)) >= 0 & Convert.ToInt32(endtime.Substring(3, 2)) <= 59 & Convert.ToInt32(endtime.Substring(3, 2)) >= 0)
+            {
+                if (Convert.ToInt32(begintime.Substring(0, 2)) <= Convert.ToInt32(endtime.Substring(0, 2)))
+                {
+                    return true;
+                }
+            }
+        }
+        catch
+        {
+
+        }
+        
+        return false;
     }
 }

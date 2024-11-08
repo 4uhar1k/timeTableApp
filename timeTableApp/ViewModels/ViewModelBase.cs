@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using timeTableApp.Models;
 
 namespace timeTableApp.ViewModels
@@ -24,6 +25,8 @@ namespace timeTableApp.ViewModels
         public ObservableCollection<Category> Categories { get; set; }
         public ObservableCollection<string> NamesOfCategories { get; set; }
         public ObservableCollection<Event>[] Events { get; set; }
+        public ICommand AddEvent { get; set; }
+        public ICommand AddCategory { get; set; }
 
         public Event EventToEdit { get; set; }
         public Event EventToSave { get; set; }
@@ -68,7 +71,7 @@ namespace timeTableApp.ViewModels
                     e.Time = sr.ReadLine();
                     catId = Convert.ToInt32(sr.ReadLine());
                     catName = sr.ReadLine();
-                    if (catId == 0 && catName == "")
+                    if (catName == "" || catName == "None")
                     {
                         e.EventCategory = new Category() { Id = catId, CategoryName = "without category" };
                     }
@@ -220,6 +223,8 @@ namespace timeTableApp.ViewModels
         protected void OnPropertyChanged([CallerMemberName] string property = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+            ((Command)AddEvent).ChangeCanExecute();
+            ((Command)AddCategory).ChangeCanExecute();
         }
     }
 }

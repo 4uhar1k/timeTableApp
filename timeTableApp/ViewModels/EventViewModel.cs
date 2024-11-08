@@ -19,8 +19,8 @@ namespace timeTableApp.ViewModels
         public string beginTime, endTime;
         string name;
         int id;
-        public ICommand AddEvent { get; set; }
-        public ICommand AddCategory { get; set; }
+        
+        
 
         public EventViewModel()
         {
@@ -28,7 +28,7 @@ namespace timeTableApp.ViewModels
             id = 0;
             //Events = new ObservableCollection<Models.Event>();
             Event = new Event();
-            
+
 
             AddEvent = new Command(() =>
             {
@@ -38,20 +38,19 @@ namespace timeTableApp.ViewModels
                     Description = Description,
                     Day = Day,
                     Time = $"{BeginTime}-{EndTime}",
-                    
+
                 };
+                Category newCat = new Category();
                 try
                 {
-                    Category newCat = new Category();
                     newCat = Categories.First(n => n.CategoryName == CategoryName);
-                    newEvent.EventCategory = newCat;
                 }
                 catch
                 {
-                    newEvent.EventCategory.Id = 0;
-                    newEvent.EventCategory.CategoryName = "";
+                    newCat = new Category() { Id = 0, CategoryName = "" };
+
                 }
-                
+                newEvent.EventCategory = newCat;
                 try
                 {
                     Event oldEvent = new Event();
@@ -61,7 +60,7 @@ namespace timeTableApp.ViewModels
                 catch
                 {
                 }
-                
+
 
                 AllEvents.Add(newEvent);
 
@@ -76,11 +75,11 @@ namespace timeTableApp.ViewModels
                         sw.WriteLine(e.EventCategory.Id);
                         sw.WriteLine(e.EventCategory.CategoryName);
                     }
-                    
+
                     sw.Close();
                 }
-                
-            });
+
+            }, () => Name != "" & CorrectTime(BeginTime, EndTime) == true & Day!="");
 
             AddCategory = new Command(() =>
             {
@@ -93,7 +92,7 @@ namespace timeTableApp.ViewModels
                     sw.WriteLine(cat.Id);
                     sw.WriteLine(cat.CategoryName);
                 }
-            });
+            }, () => CategoryName!="");
         }
 
         
@@ -102,7 +101,25 @@ namespace timeTableApp.ViewModels
             
 
             
+        public bool CorrectTime(string begintime, string endtime)
+        {
+            try
+            {
+                if (begintime.Length==5 & endtime.Length==5 & Convert.ToInt32(begintime.Substring(0, 2)) < 24 & Convert.ToInt32(begintime.Substring(0, 2)) >= 0 & Convert.ToInt32(begintime.Substring(3, 2)) <= 59 & Convert.ToInt32(begintime.Substring(3, 2)) >= 0 & Convert.ToInt32(endtime.Substring(0, 2)) < 24 & Convert.ToInt32(endtime.Substring(0, 2)) >= 0 & Convert.ToInt32(endtime.Substring(3, 2)) <= 59 & Convert.ToInt32(endtime.Substring(3, 2)) >= 0)
+                {
+                    if (Convert.ToInt32(begintime.Substring(0, 2)) <= Convert.ToInt32(endtime.Substring(0, 2)))
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
 
+            }
+
+            return false;
+        }
         
 
         public int Id
