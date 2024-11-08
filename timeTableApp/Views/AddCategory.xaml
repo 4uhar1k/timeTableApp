@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+             x:Class="timeTableApp.AddCategory"
+             >
+    <VerticalStackLayout HeightRequest="100" WidthRequest="300">
+        <Grid Padding="20" WidthRequest="300">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Picker Grid.Column="0" Grid.Row="0" WidthRequest="50" Margin="-50,-20,0,0">
+                
+                    
+                
+            </Picker>
+            <Entry Grid.Column="1" Grid.Row="0" Placeholder="Name..." Text="{Binding CategoryName}" PlaceholderColor="Black" />
+            <Button Clicked="goBack" Margin="-90,-5,0,0" Text="Cancel" Grid.Column="0" Grid.Row="1" BackgroundColor="Transparent" TextColor="Purple" FontSize="15" />
+            <Button Clicked="goBack" Command="{Binding AddCategory}" Margin="60,-5,0,0" Text="Save" Grid.Column="1" Grid.Row="1" BackgroundColor="Transparent" TextColor="Purple" FontSize="15" />
+        </Grid>
+        
+           
+    </VerticalStackLayout>
+</mct:Popup>

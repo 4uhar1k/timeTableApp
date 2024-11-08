@@ -1,12 +1,44 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="timeTableApp.Views.addEvent"
-             Title="addEvent">
+             x:Class="timeTableApp.addEvent"
+             Title="Adding...">
     <VerticalStackLayout>
-        <Editor Placeholder="Please enter the name..."  Text="{Binding Name}"  HeightRequest="60" Margin="0,50,0,0" FontSize="25"></Editor>
-        <Editor Placeholder="Please enter the description..." Text="{Binding Description}" HeightRequest="60" Margin="0,50,0,0" FontSize="25"></Editor>
-        <Editor Placeholder="Please enter the time..." Text="{Binding Time}" HeightRequest="60" Margin="0,50,0,0" FontSize="25"></Editor>
-        <Button Text="Add" Command="{Binding AddCommand}" Clicked="goBack"></Button>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Picker Grid.Column="0" Grid.Row="0" x:Name="dayPicker" SelectedItem="{Binding Day}" FontSize="20" Title="Day" TitleColor="Gray" WidthRequest="125" HorizontalTextAlignment="Center" >
+                <Picker.Items>
+                    <x:String>Monday</x:String>
+                    <x:String>Tuesday</x:String>
+                    <x:String>Wednesday</x:String>
+                    <x:String>Thursday</x:String>
+                    <x:String>Friday</x:String>
+                    <x:String>Saturday</x:String>
+                    <x:String>Sunday</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Grid.Column="0" Grid.Row="1" TitleColor="Gray" x:Name="categoryPicker" ItemsSource="{Binding NamesOfCategories}" SelectedItem="{Binding CategoryName}" SelectedIndexChanged="addCategory" FontSize="20" Title="Select a category" WidthRequest="125" HorizontalTextAlignment="Center" >
+                
+            </Picker>
+            
+            <Entry x:Name="beginTimePicker" Grid.Column="1" Grid.Row="0" FontSize="20" WidthRequest="100" PlaceholderColor="Gray" HorizontalTextAlignment="Center" Placeholder="From" Text="{Binding BeginTime}" TextChanged="TextChanged" />
+            <Entry x:Name="endTimePicker" Grid.Column="1" Grid.Row="1" FontSize="20" WidthRequest="100" HorizontalTextAlignment="Center" PlaceholderColor="Gray" Placeholder="To" Text="{Binding EndTime}" TextChanged="TextChanged" />
+
+            
+
+            
+        </Grid>
+       
+        <Editor x:Name="nameEditor" Placeholder="Please enter the name..."  Text="{Binding Name}"  HeightRequest="60" Margin="0,50,0,0" FontSize="25"></Editor>
+        <Editor x:Name="descriptionEditor" Placeholder="Please enter the description..." Text="{Binding Description}" HeightRequest="60" Margin="0,50,0,0" FontSize="25"></Editor>
+        <Button x:FieldModifier="public" x:Name="saveButton" Text="Add" Command="{Binding AddEvent}" Clicked="goBack"></Button>
     </VerticalStackLayout>
 </ContentPage>
